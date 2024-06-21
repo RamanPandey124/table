@@ -1,19 +1,18 @@
 
-import { Action, State } from "@/type/context";
+import { Action, Ipayload, State } from "@/type/context";
 
 export const initialState: State = {
-    ticker: undefined,
-    market: undefined,
-    type: undefined,
-    order: undefined,
     limit: 10
 };
 
-const handleQuery = (state:State, payload) => {
-    // console.log(payload)
-    state.ticker = payload.name
-    state.market = payload.category
-    state.order = payload.order
+const handleQuery = (state: State, payload: Ipayload) => {
+    state.cursor = undefined
+    state[payload.name] = payload.value
+    // console.log(state,payload)
+    return { ...state }
+}
+const handleNext = (state: State, payload: string) => {
+    state.cursor = payload
     console.log(state)
     return { ...state }
 }
@@ -23,6 +22,8 @@ export const counterReducer = (state: State, action: Action): State => {
 
         case ('QUERY'):
             return handleQuery(state, action.payload);
+        case ('NEXT'):
+            return handleNext(state, action.payload);
 
         default:
             return state;

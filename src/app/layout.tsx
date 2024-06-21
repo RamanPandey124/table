@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Search from "@/components/Search";
-import Category from "@/components/Category";
-import Type from "@/components/Type";
-import Order from "@/components/Order";
 import CounterProvider, { CounterContext } from "@/context/CounterContext";
+import Filter from "@/components/Filter";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,10 +21,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <CounterProvider>
           <div>
-            <Search />
-            {/* <Category />
-            <Type />
-            <Order /> */}
+            {/* <Search /> */}
+            <Filter />
             {children}
           </div>
         </CounterProvider>

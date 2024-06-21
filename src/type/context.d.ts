@@ -1,11 +1,17 @@
-
 export interface State {
-    ticker?: string,
-    market?: 'stocks' | 'crypto' | 'fx' | 'otc' | 'indices',
-    type?: string,
+    search?: string;
+    market?: 'stocks' | 'crypto' | 'fx' | 'otc' | 'indices';
+    // sort?: 'ticker' | 'name' | 'market' | 'cik';
     order?: 'asc' | 'desc';
-    limit?: number;
+    cursor?: string
+    limit: number;
 }
 
-export type Action = {}
-// | { type: 'PATH', payload: resourceDocument }
+export interface Ipayload {
+    name: string,
+    value?: string
+}
+
+export type Action
+    = { type: 'QUERY', payload: Ipayload }
+    | { type: 'NEXT', payload: string | undefined }
