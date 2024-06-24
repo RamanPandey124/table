@@ -16,7 +16,7 @@ export interface Idocument {
 
 export interface Iresponse {
     count: number;
-    next_url: string;
+    next_url?: string;
     request_id: string;
     results: Idocument[];
     status: 'OK'
